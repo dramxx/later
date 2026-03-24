@@ -2,10 +2,12 @@
 
 Share notes with yourself across machines, via cli, using a private GitHub Gist as storage.
 
-```
-later send look at https://example.com
+---
 
-later inbox
+## Install
+
+```bash
+go install github.com/dramxx/later@latest
 ```
 
 ---
@@ -35,37 +37,33 @@ later inbox
 
 ---
 
-### 3. Create the config file
+### 3. Run the guided setup
 
-```toml
-[gist]
-token = "ghp_xxxx..."
-gist_id = "1d726ef02757ca62c48defa1ab646bdc"
+```bash
+later config --init
 ```
+
+`later` will ask for:
+
+1. Your GitHub token
+2. Your private gist ID
+
+Then it writes `config.toml` automatically.
 
 **Windows:** `%APPDATA%\later\config.toml`
 
 **Linux / Mac:** `~/.config/later/config.toml`
 
-Repeat this on every machine you want to use `later` on. The config is the only setup required per machine.
-
----
-
-### 4. Install the binary
-
-**Windows** (PowerShell):
-
-```powershell
-powershell -ExecutionPolicy Bypass -Command "irm https://raw.githubusercontent.com/dramxx/later/main/install.ps1 | iex"
-```
-
-**Linux / Mac:**
+Useful commands:
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/dramxx/later/main/install.sh | sh
+later config --path
+later config
 ```
 
-The installer downloads the binary for your platform and adds it to your PATH automatically. Open a new terminal after installing.
+`later config --path` prints the config file path.
+
+`later config` opens the config file in an editor if one is available.
 
 ---
 
@@ -74,10 +72,12 @@ The installer downloads the binary for your platform and adds it to your PATH au
 ### Edit your config
 
 ```
+later config --init
 later config
+later config --path
 ```
 
-Opens `config.toml` in a text editor (Notepad on Windows, gedit on Linux). Creates the file with an empty template if it doesn't exist yet.
+Use `later config --init` for the simplest setup. Use `later config` if you want to edit the file manually later.
 
 ---
 
