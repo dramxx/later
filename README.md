@@ -7,7 +7,15 @@ Share notes with yourself across machines, via cli, using a private GitHub Gist 
 ## Install
 
 ```bash
-go install github.com/dramxx/later@latest
+cargo install later
+```
+
+Or build from source:
+
+```bash
+git clone https://github.com/dramxx/later.git
+cd later
+cargo install --path .
 ```
 
 ---
