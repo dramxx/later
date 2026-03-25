@@ -31,6 +31,7 @@ pub fn get_inbox(cfg: &Config) -> Result<String, Box<dyn std::error::Error>> {
 
     let response = client
         .get(&url)
+        .header("User-Agent", "later-cli")
         .header("Authorization", format!("Bearer {}", cfg.gist.token))
         .header("Accept", "application/vnd.github+json")
         .send()?;
@@ -68,6 +69,7 @@ pub fn update_inbox(cfg: &Config, content: &str) -> Result<(), Box<dyn std::erro
 
     let response = client
         .patch(&url)
+        .header("User-Agent", "later-cli")
         .header("Authorization", format!("Bearer {}", cfg.gist.token))
         .header("Accept", "application/vnd.github+json")
         .header("Content-Type", "application/json")
